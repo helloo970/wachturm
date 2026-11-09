@@ -1,0 +1,6 @@
+# SHA-256-Hashes bekannter Schadsoftware, einer pro Zeile.
+# Zeilen mit # sind Kommentare.
+# Quellen fuer echte Hashes: z. B. MalwareBazaar (bazaar.abuse.ch) Exporte.
+
+# EICAR-Testdatei (harmlose Antivirus-Testdatei)
+275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f

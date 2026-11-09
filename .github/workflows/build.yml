@@ -1,0 +1,42 @@
+name: Build und Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Gebaute Bibliotheken zwischenspeichern, damit spaetere Laeufe nicht wieder 15 Minuten brauchen
+      - name: vcpkg-Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/build/windows-release/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+
+      - name: Konfigurieren
+        shell: pwsh
+        run: |
+          $env:VCPKG_ROOT = $env:VCPKG_INSTALLATION_ROOT
+          cmake --preset windows-release
+
+      - name: Bauen
+        run: cmake --build build/windows-release --config Release
+
+      - name: Tests
+        run: ctest --test-dir build/windows-release -C Release --output-on-failure
+
+      - name: Programm-Paket hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: wachturm-windows
+          path: |
+            build/windows-release/Release/wachturm.exe
+            build/windows-release/Release/*.dll
+            build/windows-release/Release/config.json
+            build/windows-release/Release/blacklist.txt
+            build/windows-release/Release/rules/

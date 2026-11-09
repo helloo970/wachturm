@@ -1,0 +1,32 @@
+{
+  "threads": 64,
+  "connect_timeout_ms": 800,
+  "banner_timeout_ms": 1500,
+  "discovery_ports": [80, 443, 22, 445, 139, 3389, 53, 8080, 5000, 62078],
+  "default_ports": "1-1024,1433,1883,3306,3389,5000,5432,5900,6379,8000,8080,8443,9100,27017",
+
+  "log_file": "wachturm.log",
+  "quarantine_dir": "quarantine",
+  "logo_path": "logo.png",
+  "yara_rules_dir": "rules",
+  "blacklist_file": "blacklist.txt",
+  "baseline_file": "baseline.json",
+  "report_dir": "reports",
+
+  "entropy_threshold": 7.2,
+  "quarantine_threshold": 80,
+  "auto_quarantine": true,
+  "max_file_bytes": 268435456,
+  "exclude_dirs": [".git", "node_modules"],
+
+  "weights": {
+    "blacklist_hit": 100,
+    "yara_match": 80,
+    "double_extension": 50,
+    "high_entropy_executable": 40,
+    "new_or_modified": 20
+  },
+
+  "show_intro": true,
+  "intro_seconds": 2.5
+}

@@ -1,0 +1,22 @@
+# Build-Ausgabe (inkl. vcpkg-Bibliotheken, mehrere hundert MB)
+build/
+out/
+.vs/
+CMakeUserPresets.json
+
+# Laufzeitdaten von Wachturm - gehoeren nie ins Repository
+wachturm.log
+baseline.json
+baseline.json.tmp
+reports/
+quarantine/
+*.wtq
+quarantine.key
+
+# Editor / System
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store

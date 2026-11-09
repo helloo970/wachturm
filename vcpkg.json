@@ -1,0 +1,19 @@
+{
+  "name": "wachturm",
+  "version-string": "0.1.0",
+  "description": "Heimnetz-Sicherheits-Suite: Netzwerk-Scan, Datei-Integritaet, Quarantaene",
+  "dependencies": [
+    "openssl",
+    "zlib",
+    "nlohmann-json",
+    "stb",
+    "catch2"
+  ],
+  "default-features": [ "yara" ],
+  "features": {
+    "yara": {
+      "description": "YARA-Regel-Scanning",
+      "dependencies": [ "yara" ]
+    }
+  }
+}
